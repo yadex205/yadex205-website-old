@@ -1,0 +1,19 @@
+{
+  "name": "yadex205-website",
+  "version": "0.0.0",
+  "description": "The source for www.yadex205.info",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yadex205/yadex205-website.git"
+  },
+  "author": "Kanon Kakuno <yadex205@outlook.jp>",
+  "license": "CC-BY-4.0",
+  "bugs": {
+    "url": "https://github.com/yadex205/yadex205-website/issues"
+  },
+  "homepage": "https://github.com/yadex205/yadex205-website#readme",
+  "private": true
+}
