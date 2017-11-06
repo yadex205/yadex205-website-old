@@ -5,12 +5,13 @@ const async      = require('async')
 const glob       = require('glob')
 const replaceExt = require('replace-ext')
 const writeFile  = require('write')
+const cpx        = require('cpx')
 const ejs        = require('ejs')
 const sass       = require('node-sass')
 const browserify = require('browserify')
 
 desc('Build website')
-task('build', ['clean', 'build:html', 'build:css', 'build:js'])
+task('build', ['clean', 'build:html', 'build:css', 'build:js', 'build:vendor'])
 
 namespace('build', () => {
   desc('Compile EJS files into HTML')
@@ -53,5 +54,12 @@ namespace('build', () => {
       (done) => { b.bundle(done) },
       (result, done) => { writeFile('./htdocs/js/main.js', result, done) }
     ], (error) => { error ? fail(error) : complete() })
+  })
+
+  desc('Deploy vendor libraries')
+  task('vendor', { async: true }, () => {
+    cpx.copy('./node_modules/p5/lib/**/*', './htdocs/vendor/p5', (error) => {
+      error ? fail(error) : complete()
+    })
   })
 })
