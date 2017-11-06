@@ -10,7 +10,7 @@ const sass       = require('node-sass')
 const browserify = require('browserify')
 
 desc('Build website')
-task('build', ['build:html', 'build:css', 'build:js'])
+task('build', ['clean', 'build:html', 'build:css', 'build:js'])
 
 namespace('build', () => {
   desc('Compile EJS files into HTML')
