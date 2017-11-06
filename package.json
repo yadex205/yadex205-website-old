@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "description": "The source for www.yadex205.info",
   "scripts": {
+    "build": "jake build",
+    "live": "jake live","
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
