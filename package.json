@@ -15,5 +15,15 @@
     "url": "https://github.com/yadex205/yadex205-website/issues"
   },
   "homepage": "https://github.com/yadex205/yadex205-website#readme",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "async": "^2.5.0",
+    "browserify": "^14.5.0",
+    "ejs": "^2.5.7",
+    "glob": "^7.1.2",
+    "jake": "^8.0.15",
+    "node-sass": "^4.5.3",
+    "replace-ext": "^1.0.0",
+    "write": "^1.0.3"
+  }
 }
