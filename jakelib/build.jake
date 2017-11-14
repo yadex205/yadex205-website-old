@@ -11,7 +11,7 @@ const sass       = require('node-sass')
 const browserify = require('browserify')
 
 desc('Build website')
-task('build', ['clean', 'build:html', 'build:css', 'build:js', 'build:vendor'])
+task('build', ['clean', 'build:html', 'build:css', 'build:js', 'build:deploy'])
 
 namespace('build', () => {
   desc('Compile EJS files into HTML')
@@ -56,10 +56,22 @@ namespace('build', () => {
     ], (error) => { error ? fail(error) : complete() })
   })
 
-  desc('Deploy vendor libraries')
-  task('vendor', { async: true }, () => {
-    cpx.copy('./node_modules/p5/lib/**/*', './htdocs/vendor/p5', (error) => {
-      error ? fail(error) : complete()
+  desc('Deploy files')
+  task('deploy', ['deploy:cname', 'deploy:vendor'])
+
+  namespace('deploy', () => {
+    desc('Deploy CNAME file for Github Pages')
+    task('cname', { async: true }, () => {
+      writeFile('./htdocs/CNAME', 'www.yadex205.info\n', (error) => {
+        error ? fail(error) : complete()
+      })
+    })
+
+    desc('Deploy vendor libraries')
+    task('vendor', { async: true }, () => {
+      cpx.copy('./node_modules/p5/lib/**/*', './htdocs/vendor/p5', (error) => {
+        error ? fail(error) : complete()
+      })
     })
   })
 })
