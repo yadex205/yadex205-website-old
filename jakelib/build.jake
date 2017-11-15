@@ -69,9 +69,14 @@ namespace('build', () => {
 
     desc('Deploy vendor libraries')
     task('vendor', { async: true }, () => {
-      cpx.copy('./node_modules/p5/lib/**/*', './htdocs/vendor/p5', (error) => {
-        error ? fail(error) : complete()
-      })
+      let recipe = [
+        ['./node_modules/p5/lib/**/*', './htdocs/vendor/p5'],
+        ['./node_modules/font-awesome/{css,fonts}/*', './htdocs/vendor/font-awesome']
+      ]
+
+      async.each(recipe, (mapping, cpx_done) => {
+        cpx.copy(mapping[0], mapping[1], cpx_done)
+      }, (error) => { error ? fail(error) : complete() })
     })
   })
 })
