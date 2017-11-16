@@ -1,7 +1,12 @@
 $color-fg: #ccc;
 $color-bg: #222;
 
+html {
+  height: 100%;
+}
+
 body {
+  height: 100%;
   margin: 0;
   background-color: $color-bg;
   color: $color-fg;
@@ -19,14 +24,13 @@ h2 {
 }
 
 .global-header {
+  height: 100%;
+
   overflow-x: hidden;
   overflow-y: hidden;
 
-  .title {
-    margin: 24px;
-    font-size: 14vw;
-    font-weight: 900;
-    line-height: 100%;
+  .p5-sketch-title {
+    height: 100%;
   }
 }
 
