@@ -26,7 +26,7 @@ namespace('watch', () => {
   })
 
   task('js', { async: true }, () => {
-    chokidar.watch('./src/css/**/*.js')
+    chokidar.watch('./src/js/**/*.js')
       .on('all', () => {
         jake.Task['build:js'].reenable()
         jake.Task['build:js'].invoke()
